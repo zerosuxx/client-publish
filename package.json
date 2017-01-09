@@ -23,5 +23,6 @@
   },
   "devDependencies": {
     "eslint": "3.13.0"
-  }
+  },
+  "private": true
 }
