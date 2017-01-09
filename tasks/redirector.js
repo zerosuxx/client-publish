@@ -39,7 +39,7 @@ module.exports = function(config) {
         });
 
       // TODO promise
-      return  ;
+      return deferred;
     }
   };
 };
