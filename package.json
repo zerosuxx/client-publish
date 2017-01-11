@@ -1,6 +1,6 @@
 {
   "name": "@emartech/client-publish",
-  "description": "",
+  "description": "Deploy client side projects.",
   "main": "index.js",
   "scripts": {
     "code-style": "eslint '**/*.js'",
@@ -18,6 +18,10 @@
     "type": "git",
     "url": "git+https://github.com/emartech/client-publish.git"
   },
+  "bugs": {
+    "url": "https://github.com/emartech/client-publish/issues"
+  },
+  "homepage": "https://github.com/emartech/client-publish#readme",
   "engines": {
     "node": "6.9.1"
   },
