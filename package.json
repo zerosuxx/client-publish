@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "code-style": "eslint '**/*.js'",
-    "test": "echo 1",
+    "test": "npm run code-style",
     "semantic-release": "semantic-release pre && npm publish --access public && semantic-release post"
   },
   "release": {

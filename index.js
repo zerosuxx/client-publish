@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports.deploy = function(config) {
-  let finalConfig = extend(config, require('./tasks/config'));
+module.exports.deploy = function(config = {}) {
+  let finalConfig = Object.assign({}, config, require('./tasks/config'));
 
   require('./tasks/s3')(finalConfig).publish();
 

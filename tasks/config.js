@@ -1,5 +1,6 @@
-var argv = require('yargs').argv;
+'use strict';
 
+var argv = require('yargs').argv;
 var Config = {};
 
 Config.s3 = {
