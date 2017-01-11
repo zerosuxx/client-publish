@@ -1,19 +1,27 @@
 {
-  "name": "s3-publish",
-  "version": "1.0.0",
+  "name": "@emartech/client-publish",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "",
-    "code-style": "eslint '**/*.js'"
+    "code-style": "eslint '**/*.js'",
+    "test": "echo 1",
+    "semantic-release": "semantic-release pre && npm publish --access public && semantic-release post"
+  },
+  "release": {
+    "verifyConditions": {
+      "path": "./node_modules/semantic-release/src/lib/plugin-noop.js"
+    }
   },
   "author": "Emarsys",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emartech/client-publish.git"
+  },
   "engines": {
     "node": "6.9.1"
   },
   "dependencies": {
-    "eslint-config-emarsys": "4.0.0",
     "glob": "7.1.1",
     "q": "1.4.1",
     "rename": "1.0.4",
@@ -22,7 +30,7 @@
     "yargs": "6.6.0"
   },
   "devDependencies": {
-    "eslint": "3.13.0"
-  },
-  "private": true
+    "eslint": "3.13.0",
+    "eslint-config-emarsys": "4.0.0"
+  }
 }
