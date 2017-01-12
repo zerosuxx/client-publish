@@ -1,11 +1,22 @@
 'use strict';
 
-module.exports.deploy = function(config = {}) {
-  let finalConfig = Object.assign({}, config, require('./tasks/config'));
+let s3 = require('./lib/s3');
+let Redirector = require('./lib/redirector');
+let Revision = require('./lib/revision');
+const REVISION_TYPE = 'timestamp';
 
-  require('./tasks/s3')(finalConfig).publish();
+module.exports.deploy = function() {
+  let revision = Revision.get(REVISION_TYPE);
 
-  return require('./tasks/redirector')(finalConfig).save();
+  s3.publish(revision)
+    .then(() => {
+      console.log('Deploy successful');
+    })
+    .catch((err) => {
+      console.log('Error: ', err.message);
+    });
+
+  return Redirector.save(REVISION_TYPE);
 };
 
 module.exports.lib = {
