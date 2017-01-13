@@ -2,6 +2,9 @@
   "name": "@emartech/client-publish",
   "description": "Deploy client side projects.",
   "main": "index.js",
+  "bin": {
+    "client-publish": "./bin/deploy.js"
+  },
   "scripts": {
     "code-style": "eslint '**/*.js'",
     "test": "mocha setup-tests.spec.js lib --recursive",
