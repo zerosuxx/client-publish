@@ -7,17 +7,19 @@ let argv = require('yargs').argv;
 
 module.exports.deploy = function() {
   let revision = Revision.get(Revision.REVISION_TYPE_TIMESTAMP, argv.revision);
-  console.log(`Deploying revision ${revision}`);
+  console.log(`> Deploying with revision ${revision}`);
 
   S3Wrapper.publish(revision)
     .then(() => {
-      console.log('Deployment successful');
+      console.log('> S3 deployment successful');
+      console.log('> Updating redirector');
+      return Redirector.save(revision);
+    })
+    .then(() => {
+      console.log('> Redirector update successful');
     })
     .catch((err) => {
-      console.log('Error while deploying: ', err.message);
+      console.log('> Error while deploying');
+      console.log(err);
     });
-
-  return Redirector.save(Revision.REVISION_TYPE_TIMESTAMP);
 };
-
-module.exports.lib = Revision;
