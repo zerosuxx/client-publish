@@ -3,7 +3,8 @@
   "description": "Deploy client side projects.",
   "main": "index.js",
   "bin": {
-    "client-publish": "./bin/deploy.js"
+    "client-publish": "./bin/publish.js",
+    "client-deploy": "./bin/deploy.js"
   },
   "scripts": {
     "code-style": "eslint '**/*.js'",
@@ -29,7 +30,9 @@
     "node": "6.9.1"
   },
   "dependencies": {
+    "child-process-promise": "2.2.0",
     "glob": "7.1.1",
+    "inquirer": "2.0.0",
     "rename": "1.0.4",
     "s3": "4.4.0",
     "superagent": "3.3.1",
