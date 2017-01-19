@@ -9,7 +9,7 @@ let inquirer = require('inquirer');
 
 module.exports.publish = function() {
   let revision = Revision.get(Revision.REVISION_TYPE_TIMESTAMP, argv.revision);
-  console.log(`> Publishing with revision ${revision}`);
+  console.log(`> Uploading to S3 with revision ${revision}`);
 
   S3Wrapper.publish(revision)
     .then(() => {
@@ -39,10 +39,16 @@ module.exports.deploy = function() {
       console.log('> Merging to production branch');
       Merge.toProduction()
         .then(function(result) {
-          console.log(result);
-          process.exit(result.exit);
+          if (result.childProcess.exitCode > 0) {
+            console.log('> Error while deploying');
+            console.log(result.stderr);
+          } else {
+            console.log('> Merge to production successful');
+          }
+          process.exit(result.childProcess.exitCode);
         })
         .catch(function(err) {
+          console.log('> Error while deploying');
           console.log(err);
           process.exit(1);
         });
