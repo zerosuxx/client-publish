@@ -6,7 +6,7 @@ module.exports = {
 
   s3: {
     uploadParameters: {
-      Bucket: process.env.S3_BUCKET || '',
+      Bucket: process.env.S3_BUCKET || 'eu-west-1',
       ACL: process.env.S3_ACL || 'public-read',
       CacheControl: 'max-age=315360000, no-transform, public'
     },
