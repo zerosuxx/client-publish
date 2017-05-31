@@ -23,6 +23,7 @@ module.exports.publish = function() {
     .catch((err) => {
       console.log('> Error while publishing');
       console.log(err);
+      process.exit(1);
     });
 };
 
