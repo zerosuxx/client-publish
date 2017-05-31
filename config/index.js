@@ -2,6 +2,7 @@
 
 module.exports = {
   localDir: process.env.LOCAL_DIRECTORY || 'dist',
+  projectName: process.env.PROJECT_NAME || false,
 
   s3: {
     uploadParameters: {

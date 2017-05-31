@@ -3,6 +3,7 @@
 let sinon = require('sinon');
 let chai = require('chai');
 require('sinon-as-promised');
+require('co-mocha');
 
 before(function() {
   global.expect = chai.expect;
