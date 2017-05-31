@@ -20,8 +20,8 @@ module.exports = {
 
   redirector: {
     url: process.env.REDIRECTOR_URL || 'https://example.com',
-    name: process.env.REDIRECTOR_NAME || 'redirector_name',
-    target: process.env.REDIRECTOR_TARGET || 'redirector_target',
+    name: process.env.REDIRECTOR_NAME || process.env.PROJECT_NAME || 'redirector_name',
+    target: process.env.REDIRECTOR_TARGET || 'redirector.target.com',
     apiSecret: process.env.REDIRECTOR_API_SECRET || 'api_secret'
   }
 };
