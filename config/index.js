@@ -6,13 +6,13 @@ module.exports = {
 
   s3: {
     uploadParameters: {
-      Bucket: process.env.S3_BUCKET || 'eu-west-1',
+      Bucket: process.env.S3_BUCKET || '',
       ACL: process.env.S3_ACL || 'public-read',
       CacheControl: 'max-age=315360000, no-transform, public'
     },
 
     credentials: {
-      region: process.env.AWS_DEFAULT_REGION || '',
+      region: process.env.AWS_DEFAULT_REGION || 'eu-west-1',
       accessKeyId: process.env.AWS_ACCESS_KEY_ID || '',
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || ''
     }
