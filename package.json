@@ -30,26 +30,22 @@
     "node": "6.9.1"
   },
   "dependencies": {
-    "child-process-promise": "2.2.0",
-    "glob": "7.1.1",
-    "inquirer": "2.0.0",
+    "child-process-promise": "2.2.1",
+    "glob": "7.1.2",
+    "inquirer": "3.0.6",
     "rename": "1.0.4",
     "s3": "4.4.0",
-    "superagent": "3.3.1",
-    "yargs": "6.6.0"
+    "superagent": "3.5.2",
+    "yargs": "8.0.1"
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "chai-as-promised": "6.0.0",
-    "chai-datetime": "1.4.1",
-    "chai-subset": "1.4.0",
     "co-mocha": "1.2.0",
-    "eslint": "3.13.0",
+    "eslint": "3.19.0",
     "eslint-config-emarsys": "4.0.0",
-    "mocha": "3.2.0",
+    "mocha": "3.4.2",
     "semantic-release": "6.3.6",
-    "sinon": "1.17.7",
-    "sinon-as-promised": "4.0.2",
-    "sinon-chai": "2.8.0"
+    "sinon": "2.3.2",
+    "sinon-chai": "2.10.0"
   }
 }

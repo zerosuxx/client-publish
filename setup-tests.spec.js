@@ -2,16 +2,12 @@
 
 let sinon = require('sinon');
 let chai = require('chai');
-require('sinon-as-promised');
 require('co-mocha');
 
 before(function() {
   global.expect = chai.expect;
   global.sinon = sinon;
 
-  chai.use(require('chai-subset'));
-  chai.use(require('chai-as-promised'));
-  chai.use(require('chai-datetime'));
   chai.use(require('sinon-chai'));
 });
 
