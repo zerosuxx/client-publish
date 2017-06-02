@@ -4,10 +4,14 @@ let S3Wrapper = require('./lib/s3-wrapper');
 let Redirector = require('./lib/redirector');
 let Revision = require('./lib/revision');
 let Merge = require('./lib/merge');
+let ConfigValidator = require('./lib/config-validator');
+let config = require('./config');
 let argv = require('yargs').argv;
 let inquirer = require('inquirer');
 
 module.exports.publish = function() {
+  ConfigValidator.checkValues(config);
+
   let revision = Revision.get(Revision.REVISION_TYPE_TIMESTAMP, argv.revision);
   console.log(`> Uploading to S3 with revision ${revision}`);
 
@@ -21,7 +25,7 @@ module.exports.publish = function() {
       console.log('> Redirector update successful');
     })
     .catch((err) => {
-      console.log('> Error while publishing');
+      console.log(`> Error while publishing: ${err.message}`);
       console.log(err);
       process.exit(1);
     });
@@ -37,6 +41,8 @@ module.exports.deploy = function() {
 
   inquirer.prompt([question]).then(function(answers) {
     if (answers.deploy) {
+      ConfigValidator.checkValues(config);
+
       console.log('> Merging to production branch');
       Merge.toProduction()
         .then(function(result) {
@@ -49,7 +55,7 @@ module.exports.deploy = function() {
           process.exit(result.childProcess.exitCode);
         })
         .catch(function(err) {
-          console.log('> Error while deploying');
+          console.log(`> Error while deploying: ${err.message}`);
           console.log(err);
           process.exit(1);
         });
