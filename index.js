@@ -9,7 +9,7 @@ let config = require('./config');
 let argv = require('yargs').argv;
 let inquirer = require('inquirer');
 
-module.exports.publish = function() {
+module.exports.deploy = function() {
   ConfigValidator.checkValues(config);
 
   let revision = Revision.get(Revision.REVISION_TYPE_TIMESTAMP, argv.revision);
@@ -25,29 +25,29 @@ module.exports.publish = function() {
       console.log('> Redirector update successful');
     })
     .catch((err) => {
-      console.log(`> Error while publishing: ${err.message}`);
+      console.log(`> Error while deploying: ${err.message}`);
       console.log(err);
       process.exit(1);
     });
 };
 
-module.exports.deploy = function() {
+module.exports.merge = function() {
   let question = {
     type: 'confirm',
-    name: 'deploy',
+    name: 'merge',
     message: 'Do you really want to deploy to production?',
     default: false
   };
 
   inquirer.prompt([question]).then(function(answers) {
-    if (answers.deploy) {
+    if (answers.merge) {
       ConfigValidator.checkValues(config);
 
       console.log('> Merging to production branch');
       Merge.toProduction()
         .then(function(result) {
           if (result.childProcess.exitCode > 0) {
-            console.log('> Error while deploying');
+            console.log('> Error while merging');
             console.log(result.stderr);
           } else {
             console.log('> Merge to production successful');
@@ -55,7 +55,7 @@ module.exports.deploy = function() {
           process.exit(result.childProcess.exitCode);
         })
         .catch(function(err) {
-          console.log(`> Error while deploying: ${err.message}`);
+          console.log(`> Error while merging: ${err.message}`);
           console.log(err);
           process.exit(1);
         });

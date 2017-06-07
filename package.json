@@ -3,8 +3,10 @@
   "description": "Deploy client side projects.",
   "main": "index.js",
   "bin": {
-    "client-publish": "./bin/publish.js",
-    "client-deploy": "./bin/deploy.js"
+    "client-deploy": "./bin/deploy.js",
+    "client-deploy-staging": "./bin/deploy-staging.js",
+    "client-deploy-production": "./bin/deploy-production.js",
+    "client-merge": "./bin/merge.js"
   },
   "scripts": {
     "code-style": "eslint '**/*.js'",
