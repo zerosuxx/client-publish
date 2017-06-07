@@ -1,4 +1,6 @@
 # client-publish
+[![Dependency Status](https://david-dm.org/emartech/client-publish.svg)](https://david-dm.org/emartech/client-publish)
+[![devDependency Status](https://david-dm.org/emartech/client-publish/dev-status.svg)](https://david-dm.org/emartech/client-publish?type=dev)
 
 Uploads the bundled client application to Amazon S3 and sets up redirection to that bucket.
 

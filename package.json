@@ -1,6 +1,6 @@
 {
   "name": "@emartech/client-publish",
-  "description": "Deploy client side projects.",
+  "description": "Deployer for client side projects.",
   "main": "index.js",
   "bin": {
     "client-deploy": "./bin/deploy.js",
