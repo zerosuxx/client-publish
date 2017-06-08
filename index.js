@@ -41,8 +41,6 @@ module.exports.merge = function() {
 
   inquirer.prompt([question]).then(function(answers) {
     if (answers.merge) {
-      ConfigValidator.checkValues(config);
-
       console.log('> Merging to production branch');
       Merge.toProduction()
         .then(function(result) {
