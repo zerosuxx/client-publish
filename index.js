@@ -31,6 +31,14 @@ module.exports.deploy = function() {
     });
 };
 
+module.exports.deployWithRevision = function(revision) {
+  S3Wrapper
+    .publish(revision)
+    .then(() => {
+      return Redirector.save(revision);
+    });
+};
+
 module.exports.merge = function() {
   let question = {
     type: 'confirm',
