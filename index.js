@@ -15,7 +15,7 @@ module.exports.deploy = function() {
   let revision = Revision.get(Revision.REVISION_TYPE_TIMESTAMP, argv.revision);
   console.log(`> Uploading to S3 with revision ${revision}`);
 
-  S3Wrapper.publish(revision)
+  return S3Wrapper.publish(revision)
     .then(() => {
       console.log('> S3 upload successful');
       console.log('> Updating redirector');
@@ -32,7 +32,7 @@ module.exports.deploy = function() {
 };
 
 module.exports.deployWithRevision = function(revision) {
-  S3Wrapper
+  return S3Wrapper
     .publish(revision)
     .then(() => {
       return Redirector.save(revision);
@@ -47,7 +47,7 @@ module.exports.merge = function() {
     default: false
   };
 
-  inquirer.prompt([question]).then(function(answers) {
+  return inquirer.prompt([question]).then(function(answers) {
     if (answers.merge) {
       console.log('> Merging to production branch');
       Merge.toProduction()
