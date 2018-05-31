@@ -12,7 +12,7 @@ before(function() {
 });
 
 beforeEach(function() {
-  this.sandbox = sinon.sandbox.create();
+  this.sandbox = sinon.createSandbox();
   this.sinon = sinon;
 });
 
