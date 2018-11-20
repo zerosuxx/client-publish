@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/emartech/client-publish#readme",
   "engines": {
-    "node": ">=6.9.0",
+    "node": ">=8.9.0",
     "npm": "6.4.1"
   },
   "dependencies": {
