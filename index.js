@@ -5,6 +5,7 @@ let Redirector = require('./lib/redirector');
 let Revision = require('./lib/revision');
 let Merge = require('./lib/merge');
 let ConfigValidator = require('./lib/config-validator');
+let UploadValidator = require('./lib/upload-validator');
 let config = require('./config');
 let argv = require('yargs').argv;
 let inquirer = require('inquirer');
