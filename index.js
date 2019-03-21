@@ -19,12 +19,13 @@ module.exports.deploy = function() {
   return S3Wrapper.publish(revision)
     .then(() => {
       console.log('> S3 upload successful');
+      return UploadValidator.validate(revision);
+    })
+    .then(() => {
       console.log('> Updating redirector');
       return Redirector.save(revision);
     })
-    .then(() => {
-      console.log('> Redirector update successful');
-    })
+    .then(() => console.log('> Redirector update successful'))
     .catch((err) => {
       console.log(`> Error while deploying: ${err.message}`);
       console.log(err);

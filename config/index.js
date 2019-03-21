@@ -6,6 +6,7 @@ module.exports = {
   localDir: process.env.LOCAL_DIRECTORY || 'dist',
   projectName: process.env.PROJECT_NAME || false,
   projectHasCustomName: process.env.PROJECT_HAS_CUSTOM_NAME === 'true' || false,
+  validationWaitTime: process.env.VALIDATION_WAIT_TIME || 1000,
 
   s3: {
     uploadParameters: {
