@@ -7,6 +7,7 @@ module.exports = {
   projectName: process.env.PROJECT_NAME || false,
   projectHasCustomName: process.env.PROJECT_HAS_CUSTOM_NAME === 'true' || false,
   validationWaitTime: process.env.VALIDATION_WAIT_TIME || defaultConfig.validationWaitTime,
+  deployTargets: process.env.FIREBASE_DEPLOY === 'true' ? ['redirector', 'firebase'] : ['redirector'],
 
   s3: {
     uploadParameters: {
@@ -27,5 +28,11 @@ module.exports = {
     name: process.env.REDIRECTOR_NAME || process.env.PROJECT_NAME,
     target: process.env.REDIRECTOR_TARGET || defaultConfig.redirector.target,
     apiSecret: process.env.REDIRECTOR_API_SECRET
+  },
+
+  firebase: {
+    project: process.env.FIREBASE_PROJECT,
+    site: process.env.FIREBASE_SITE || process.env.PROJECT_NAME,
+    accessToken: process.env.FIREBASE_TOKEN
   }
 };
