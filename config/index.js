@@ -3,20 +3,20 @@
 const defaultConfig = require('./default');
 
 module.exports = {
-  localDir: process.env.LOCAL_DIRECTORY || 'dist',
+  localDir: process.env.LOCAL_DIRECTORY || defaultConfig.localDir,
   projectName: process.env.PROJECT_NAME || false,
   projectHasCustomName: process.env.PROJECT_HAS_CUSTOM_NAME === 'true' || false,
-  validationWaitTime: process.env.VALIDATION_WAIT_TIME || 1000,
+  validationWaitTime: process.env.VALIDATION_WAIT_TIME || defaultConfig.validationWaitTime,
 
   s3: {
     uploadParameters: {
-      Bucket: process.env.S3_BUCKET || defaultConfig.s3Bucket,
-      ACL: process.env.S3_ACL || 'public-read',
-      CacheControl: process.env.S3_CACHE_CONTROL || 'max-age=315360000, no-transform, public'
+      Bucket: process.env.S3_BUCKET || defaultConfig.s3.bucket,
+      ACL: process.env.S3_ACL || defaultConfig.s3.acl,
+      CacheControl: process.env.S3_CACHE_CONTROL || defaultConfig.s3.cacheControl
     },
 
     credentials: {
-      region: process.env.AWS_REGION || 'eu-west-1',
+      region: process.env.AWS_REGION || defaultConfig.s3.awsRegion,
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
     }
