@@ -40,7 +40,6 @@
   "devDependencies": {
     "chai": "4.3.4",
     "chai-as-promised": "7.1.1",
-    "co-mocha": "1.2.2",
     "eslint": "8.2.0",
     "eslint-config-emarsys": "5.1.0",
     "mocha": "9.1.3",
