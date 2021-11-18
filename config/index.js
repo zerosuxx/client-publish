@@ -32,7 +32,7 @@ module.exports = {
 
   firebase: {
     project: process.env.FIREBASE_PROJECT,
-    site: process.env.FIREBASE_SITE || process.env.PROJECT_NAME,
+    site: process.env.FIREBASE_SITE,
     accessToken: process.env.FIREBASE_TOKEN
   }
 };

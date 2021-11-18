@@ -2,7 +2,7 @@
 
 const Revision = require('./lib/utils/revision');
 
-const { deployToRedirector } = require('./lib/targets');
+const { deployToRedirector, deployToFirebase } = require('./lib/targets');
 const { mergeMasterToProduction } = require('./lib/commands');
 
 const config = require('./config');
@@ -12,11 +12,17 @@ const inquirer = require('inquirer');
 module.exports.deploy = function() {
   const revision = Revision.get(Revision.REVISION_TYPE_TIMESTAMP, argv.revision);
 
-  return deployToRedirector(config, revision);
+  this.deployWithRevision(revision);
 };
 
 module.exports.deployWithRevision = function(revision) {
-  return deployToRedirector(config, revision);
+  if (config.deployTargets.includes('redirector')) {
+    deployToRedirector(config, revision);
+  }
+
+  if (config.deployTargets.includes('firebase')) {
+    deployToFirebase(config, revision);
+  }
 };
 
 module.exports.merge = function() {

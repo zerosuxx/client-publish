@@ -1,5 +1,6 @@
 {
   "name": "@emartech/client-publish",
+  "version": "0.0.0-development",
   "description": "Deployer for client side projects.",
   "main": "index.js",
   "bin": {
@@ -30,6 +31,7 @@
     "@auth0/s3": "1.0.0",
     "@emartech/delay-js": "1.0.0",
     "child-process-promise": "2.2.1",
+    "firebase-tools": "9.22.0",
     "glob": "7.2.0",
     "inquirer": "8.2.0",
     "mime": "3.0.0",
