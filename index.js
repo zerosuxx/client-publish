@@ -15,14 +15,20 @@ module.exports.deploy = function() {
   this.deployWithRevision(revision);
 };
 
-module.exports.deployWithRevision = function(revision) {
+module.exports.deployWithRevision = async function(revision) {
+  const deployments = [];
+
   if (config.deployTargets.includes('redirector')) {
-    deployToRedirector(config, revision);
+    const redirectorDeployment = deployToRedirector(config, revision);
+    deployments.push(redirectorDeployment);
   }
 
   if (config.deployTargets.includes('firebase')) {
-    deployToFirebase(config, revision);
+    const firebaseDeployment = deployToFirebase(config, revision);
+    deployments.push(firebaseDeployment);
   }
+
+  return Promise.all(deployments);
 };
 
 module.exports.merge = function() {
