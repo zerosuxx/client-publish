@@ -4,6 +4,7 @@
   "description": "Deployer for client side projects.",
   "main": "index.js",
   "bin": {
+    "client-publish": "./bin/client-publish.js",
     "client-deploy": "./bin/legacy/deploy.js",
     "client-deploy-staging": "./bin/legacy/deploy-staging.js",
     "client-deploy-production": "./bin/legacy/deploy-production.js",
@@ -31,6 +32,7 @@
     "@auth0/s3": "1.0.0",
     "@emartech/delay-js": "1.0.0",
     "child-process-promise": "2.2.1",
+    "commander": "8.3.0",
     "firebase-tools": "9.22.0",
     "glob": "7.2.0",
     "inquirer": "8.2.0",
