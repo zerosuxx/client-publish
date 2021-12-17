@@ -4,7 +4,7 @@ const Revision = require('./lib/utils/revision');
 
 const { deployToRedirector } = require('./lib/deploy/redirector');
 const { deployToFirebase } = require('./lib/deploy/firebase');
-const { mergeMasterToProduction } = require('./lib/commands');
+const { mergeMasterToProduction } = require('./lib/git/merge');
 
 const config = require('./config');
 const argv = require('yargs').argv;
