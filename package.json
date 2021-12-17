@@ -4,10 +4,10 @@
   "description": "Deployer for client side projects.",
   "main": "index.js",
   "bin": {
-    "client-deploy": "./bin/deploy.js",
-    "client-deploy-staging": "./bin/deploy-staging.js",
-    "client-deploy-production": "./bin/deploy-production.js",
-    "client-merge": "./bin/merge.js"
+    "client-deploy": "./bin/legacy/deploy.js",
+    "client-deploy-staging": "./bin/legacy/deploy-staging.js",
+    "client-deploy-production": "./bin/legacy/deploy-production.js",
+    "client-merge": "./bin/legacy/merge.js"
   },
   "scripts": {
     "code-style": "eslint '**/*.js'",
