@@ -2,7 +2,8 @@
 
 const Revision = require('./lib/utils/revision');
 
-const { deployToRedirector, deployToFirebase } = require('./lib/targets');
+const { deployToRedirector } = require('./lib/deploy/redirector');
+const { deployToFirebase } = require('./lib/deploy/firebase');
 const { mergeMasterToProduction } = require('./lib/commands');
 
 const config = require('./config');
