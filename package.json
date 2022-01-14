@@ -33,11 +33,13 @@
     "@emartech/delay-js": "1.0.0",
     "child-process-promise": "2.2.1",
     "commander": "8.3.0",
+    "conventional-recommended-bump": "6.1.0",
     "firebase-tools": "9.22.0",
     "glob": "7.2.0",
     "inquirer": "8.2.0",
     "mime": "3.0.0",
     "rename": "1.0.4",
+    "semver": "7.3.5",
     "superagent": "6.1.0",
     "yargs": "17.2.1"
   },
