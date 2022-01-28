@@ -31,25 +31,20 @@ const tag = async (program) => {
   const options = program.opts();
   const revision = options.revision || Revision.get(Revision.REVISION_TYPE_ENV);
   const prefix = options.prefix || '';
-  const autoYes = options.yes;
+  const autoYes = !!options.yes;
   const newTag = `${prefix}${revision}`;
 
-  if (autoYes) {
-    await createTag(newTag);
-    return;
-  }
+  if (!autoYes) {
+    const answers = await inquirer.prompt([{
+      type: 'confirm',
+      name: 'tag',
+      message: `Do you really want to create a new git tag ${newTag}?`,
+      default: false
+    }]);
 
-  const question = {
-    type: 'confirm',
-    name: 'tag',
-    message: `Do you really want to create a new git tag ${newTag}?`,
-    default: false
-  };
-
-  const answers = await inquirer.prompt([question]);
-
-  if (!answers.tag) {
-    process.exit(1);
+    if (!answers.tag) {
+      process.exit(1);
+    }
   }
 
   await createTag(newTag);

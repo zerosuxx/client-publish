@@ -22,26 +22,21 @@ program
   .addOption(autoYesOption.default(false))
   .parse(process.argv);
 
-const merge = async () => {
+const merge = async (program) => {
   const options = program.opts();
-  const autoYes = options.yes;
+  const autoYes = !!options.yes;
 
-  if (autoYes) {
-    await mergeMasterToProduction();
-    return;
-  }
+  if (!autoYes) {
+    const answers = await inquirer.prompt([{
+      type: 'confirm',
+      name: 'merge',
+      message: 'Do you really want to deploy to production?',
+      default: false
+    }]);
 
-  const question = {
-    type: 'confirm',
-    name: 'merge',
-    message: 'Do you really want to deploy to production?',
-    default: false
-  };
-
-  const answers = await inquirer.prompt([question]);
-
-  if (!answers.merge) {
-    process.exit(1);
+    if (!answers.merge) {
+      process.exit(1);
+    }
   }
 
   await mergeMasterToProduction();
