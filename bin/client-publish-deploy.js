@@ -1,17 +1,32 @@
 #! /usr/bin/env node
 'use strict';
 
-const program = require('commander');
+const { Command, Option } = require('commander');
+
 const config = require('../config');
-const createTag = require('../lib/git/tag');
 const Revision = require('../lib/utils/revision');
+const createTag = require('../lib/git/tag');
 const deployToRedirector = require('../lib/deploy/redirector');
 const deployToFirebase = require('../lib/deploy/firebase');
 
+const program = new Command();
+const usage = `[options]
+
+Deploys assets to the given platforms
+
+Example usage:
+  $ client-publish deploy --target-env production --revision 4.2.0 --create-tag`;
+
+const targetEnvOption = new Option('-e, --target-env <env>', 'the target environment the deployment is for');
+const revisionOption = new Option('-r, --revision <revision>', 'the revision to use when deploying');
+const createTagOption = new Option('-t, --create-tag', 'create a git tag for the new revision');
+
 program
-  .option('-e --target-env <env>', 'the target environment to deploy to (staging|production)', process.env.DEPLOY_ENV)
-  .option('-r --revision <revision>', 'the revision to use when deploying', process.env.PROJECT_REVISION)
-  .option('-t --tag', 'also create a git tag for the new revision')
+  .name('client-publish revision')
+  .usage(usage)
+  .addOption(targetEnvOption.choices(['staging', 'production']).default('staging').env('DEPLOY_ENV'))
+  .addOption(revisionOption.default('current timestamp').env('PROJECT_REVISION'))
+  .addOption(createTagOption.default(false))
   .parse(process.argv);
 
 const deploy = async () => {
