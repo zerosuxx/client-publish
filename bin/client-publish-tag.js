@@ -29,7 +29,7 @@ program
 
 const tag = async (program) => {
   const options = program.opts();
-  const revision = options.revision || Revision.get(Revision.REVISION_TYPE_ENV);
+  const revision = options.revision || Revision.get(Revision.REVISION_TYPE.ENV);
   const prefix = options.prefix || '';
   const autoYes = !!options.yes;
   const newTag = `${prefix}${revision}`;

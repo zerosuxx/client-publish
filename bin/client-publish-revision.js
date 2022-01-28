@@ -4,13 +4,7 @@
 const { Command, Option } = require('commander');
 
 const Revision = require('../lib/utils/revision');
-
-const modeList = [
-  Revision.REVISION_TYPE_ENV, // env
-  Revision.REVISION_TYPE_PACKAGE, // package
-  Revision.REVISION_TYPE_TIMESTAMP, // timestamp
-  Revision.REVISION_TYPE_GIT_TAG // git-tag
-];
+const modeList = Object.values(Revision.REVISION_TYPE);
 
 const program = new Command();
 const usage = `[options]

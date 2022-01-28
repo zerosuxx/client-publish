@@ -32,7 +32,7 @@ program
 const deploy = async () => {
   const options = program.opts();
   const target = options.target || 'staging';
-  const revision = options.revision || Revision.get(Revision.REVISION_TYPE_TIMESTAMP);
+  const revision = options.revision || Revision.get(Revision.REVISION_TYPE.TIMESTAMP);
   const shouldCreateTag = !!options.tag;
 
   if (config.deployTargets.includes('redirector')) {
