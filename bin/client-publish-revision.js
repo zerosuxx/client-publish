@@ -36,7 +36,7 @@ const revision = async (program) => {
   const next = options.next;
 
   if (!modeList.includes(mode)) {
-    console.log(`! Invalid mode "${mode}". Mode must be (${modeList.join('|')}). Exiting.`);
+    console.error(`! Invalid mode "${mode}". Mode must be (${modeList.join('|')}). Exiting.`);
     process.exit(1);
   }
 
