@@ -1,7 +1,7 @@
 {
   "name": "@emartech/client-publish",
   "version": "0.0.0-development",
-  "description": "Deployer for client side projects.",
+  "description": "Deployer for client side projects",
   "main": "lib/_legacy/index.js",
   "bin": {
     "client-publish": "./bin/client-publish.js",
