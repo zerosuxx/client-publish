@@ -33,7 +33,6 @@ module.exports = {
   firebase: {
     project: process.env.FIREBASE_PROJECT,
     site: process.env.FIREBASE_SITE,
-    token: process.env.FIREBASE_TOKEN,
     credentials: {
       path: process.env.GOOGLE_APPLICATION_CREDENTIALS,
       content: process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON
