@@ -1,5 +1,5 @@
 {
   "branches": [
-    { "name": "master", "prerelease": "beta" }
+    { "name": "master", "range": "N.x", "prerelease": "beta" }
   ]
 }
