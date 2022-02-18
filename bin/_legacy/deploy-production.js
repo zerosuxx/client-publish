@@ -2,4 +2,4 @@
 'use strict';
 
 process.env.DEPLOY_ENV = 'production';
-require('../../').deploy();
+require('../../lib/_legacy').deploy();

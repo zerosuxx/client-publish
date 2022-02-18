@@ -2,4 +2,4 @@
 'use strict';
 
 process.env.DEPLOY_ENV = 'staging';
-require('../../').deploy();
+require('../../lib/_legacy').deploy();

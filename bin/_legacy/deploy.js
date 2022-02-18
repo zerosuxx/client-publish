@@ -1,4 +1,4 @@
 #! /usr/bin/env node
 'use strict';
 
-require('../../').deploy();
+require('../../lib/_legacy').deploy();
