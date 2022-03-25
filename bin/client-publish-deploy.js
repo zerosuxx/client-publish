@@ -25,7 +25,7 @@ program
   .name('client-publish revision')
   .usage(usage)
   .addOption(targetEnvOption.choices(['staging', 'production']).default('staging').env('DEPLOY_ENV'))
-  .addOption(revisionOption.default('current timestamp').env('PROJECT_REVISION'))
+  .addOption(revisionOption.default(null, 'current timestamp').env('PROJECT_REVISION'))
   .addOption(createTagOption.default(false))
   .parse(process.argv);
 
