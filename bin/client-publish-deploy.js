@@ -31,7 +31,7 @@ program
 
 const deploy = async () => {
   const options = program.opts();
-  const target = options.target || 'staging';
+  const target = options.targetEnv || 'staging';
   const revision = options.revision || Revision.get(Revision.REVISION_TYPE.TIMESTAMP);
   const shouldCreateTag = !!options.tag;
 
