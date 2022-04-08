@@ -37,7 +37,9 @@ const deploy = async () => {
   const shouldCreateTag = !!options.tag;
   const config = new ConfigProvider(configMap, targetEnv);
 
-  await deployToRedirector(config, revision, targetEnv);
+  if (config.get('redirector.deploy')) {
+    await deployToRedirector(config, revision, targetEnv);
+  }
 
   if (config.get('firebase.deploy')) {
     await deployToFirebase(config, revision, targetEnv);

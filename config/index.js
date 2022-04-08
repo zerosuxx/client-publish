@@ -58,6 +58,11 @@ const s3Config = {
 };
 
 const redirectorConfig = {
+  'redirector.deploy': {
+    env: 'REDIRECTOR_DEPLOY',
+    type: 'boolean',
+    default: true
+  },
   'redirector.url': {
     env: 'REDIRECTOR_URL',
     type: 'string',
