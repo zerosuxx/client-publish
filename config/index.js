@@ -49,11 +49,13 @@ const s3Config = {
   },
   's3.credentials.accessKeyId': {
     env: 'AWS_ACCESS_KEY_ID',
-    type: 'string'
+    type: 'string',
+    optional: true
   },
   's3.credentials.secretAccessKey': {
     env: 'AWS_SECRET_ACCESS_KEY',
-    type: 'string'
+    type: 'string',
+    optional: true
   }
 };
 
@@ -71,10 +73,6 @@ const redirectorConfig = {
       production: 'https://redirector.gservice.emarsys.net'
     }
   },
-  'redirector.name': {
-    env: ['REDIRECTOR_NAME', 'PROJECT_NAME'],
-    type: 'string'
-  },
   'redirector.target': {
     env: 'REDIRECTOR_TARGET',
     type: 'string',
@@ -83,9 +81,15 @@ const redirectorConfig = {
       production: 'assets.emarsys.net'
     }
   },
+  'redirector.name': {
+    env: ['REDIRECTOR_NAME', 'PROJECT_NAME'],
+    type: 'string',
+    optional: true
+  },
   'redirector.apiSecret': {
     env: 'REDIRECTOR_API_SECRET',
-    type: 'string'
+    type: 'string',
+    optional: true
   }
 };
 
@@ -97,15 +101,18 @@ const firebaseConfig = {
   },
   'firebase.project': {
     env: 'FIREBASE_PROJECT',
-    type: 'string'
+    type: 'string',
+    optional: true
   },
   'firebase.site': {
     env: 'FIREBASE_SITE',
-    type: 'string'
+    type: 'string',
+    optional: true
   },
   'firebase.credentials': {
     env: 'GOOGLE_APPLICAITON_CREDENTIALS_JSON',
-    type: 'string'
+    type: 'string',
+    optional: true
   }
 };
 
