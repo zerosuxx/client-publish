@@ -34,7 +34,7 @@ const deploy = async () => {
   const options = program.opts();
   const targetEnv = options.targetEnv || 'staging';
   const revision = options.revision || Revision.get(Revision.REVISION_TYPE.TIMESTAMP);
-  const shouldCreateTag = !!options.tag;
+  const shouldCreateTag = !!options.createTag;
   const config = new ConfigProvider(configMap, targetEnv);
 
   if (config.get('redirector.deploy')) {
