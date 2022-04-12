@@ -8,8 +8,8 @@ const basicConfig = {
   },
   'projectName': {
     env: 'PROJECT_NAME',
-    type: 'boolean',
-    default: false
+    type: 'string',
+    optional: true
   },
   'projectHasCustomName': {
     env: 'PROJECT_HAS_CUSTOM_NAME',
