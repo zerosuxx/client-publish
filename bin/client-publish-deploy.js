@@ -4,11 +4,11 @@
 const { Command, Option } = require('commander');
 
 const Revision = require('../lib/utils/revision');
-const ConfigProvider = require('../utils/config-provider');
+const ConfigProvider = require('../lib/utils/config-provider');
 const createTag = require('../lib/git/tag');
 const deployToRedirector = require('../lib/deploy/redirector');
 const deployToFirebase = require('../lib/deploy/firebase');
-const configMap = require('../../config');
+const configMap = require('../config');
 
 const program = new Command();
 const usage = `[options]
