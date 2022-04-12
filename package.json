@@ -33,6 +33,7 @@
     "@emartech/delay-js": "1.0.0",
     "child-process-promise": "2.2.1",
     "commander": "9.1.0",
+    "conventional-changelog-angular": "5.0.13",
     "conventional-recommended-bump": "6.1.0",
     "firebase-tools": "10.5.0",
     "glob": "7.2.0",
