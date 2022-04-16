@@ -110,7 +110,7 @@ const firebaseConfig = {
     optional: true
   },
   'firebase.credentials': {
-    env: 'GOOGLE_APPLICAITON_CREDENTIALS_JSON',
+    env: 'GOOGLE_APPLICATION_CREDENTIALS_JSON',
     type: 'string',
     optional: true
   }
