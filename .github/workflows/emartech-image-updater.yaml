@@ -10,7 +10,7 @@ env:
   COMPOSE_DOCKER_CLI_BUILD: 1
   BUILDKIT_PROGRESS: plain
   DOCKER_CLI_EXPERIMENTAL: enabled
-  NPM_PACKAGE: @emartech/client-publish
+  NPM_PACKAGE: '@emartech/client-publish'
   TARGET_IMAGE: zerosuxx/emartech-client-publish
 
 jobs:
