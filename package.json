@@ -41,7 +41,7 @@
     "mime": "3.0.0",
     "rename": "1.0.4",
     "semver": "7.3.5",
-    "superagent": "7.1.2",
+    "superagent": "7.1.1",
     "yargs": "17.4.0"
   },
   "devDependencies": {
