@@ -1,4 +1,4 @@
-name: deploy
+name: emartech-image-updater
 
 on:
   workflow_dispatch:
@@ -10,6 +10,7 @@ env:
   COMPOSE_DOCKER_CLI_BUILD: 1
   BUILDKIT_PROGRESS: plain
   DOCKER_CLI_EXPERIMENTAL: enabled
+  NPM_PACKAGE: @emartech/client-publish
   TARGET_IMAGE: zerosuxx/emartech-client-publish
 
 jobs:
@@ -21,8 +22,9 @@ jobs:
 
       - name: Check version
         run: |
-          export VERSION=$(npm view @emartech/client-publish version)
+          export VERSION=$(npm view $NPM_PACKAGE version)
           docker manifest inspect $TARGET_IMAGE:$VERSION
+          echo "version=$VERSION" >> $GITHUB_ENV
 
       - name: Set up Docker Buildx
         if: failure()
@@ -37,5 +39,5 @@ jobs:
             --platform linux/arm64,linux/amd64 \
             --target emartech \
             -t $TARGET_IMAGE:latest \
-            -t $TARGET_IMAGE:$VERSION \
+            -t $TARGET_IMAGE:${{ env.version }} \
             .
