@@ -33,11 +33,9 @@ jobs:
         if: failure()
         run: |
           docker buildx build \
-            --load \
+            --push \
             --platform linux/arm64,linux/amd64 \
             --target emartech \
             -t $TARGET_IMAGE:latest \
+            -t $TARGET_IMAGE:$VERSION \
             .
-          docker tag $TARGET_IMAGE:latest $TARGET_IMAGE:$VERSION
-          docker push $TARGET_IMAGE:$VERSION
-          docker push $TARGET_IMAGE:latest
