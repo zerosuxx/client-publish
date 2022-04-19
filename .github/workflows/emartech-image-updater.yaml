@@ -15,41 +15,48 @@ env:
   DOCKERHUB_USERNAME: 'zerosuxx'
 
 jobs:
+  check-docker-image-exists:
+    runs-on: ubuntu-latest
+    outputs:
+      packageVersion: ${{ steps.check.outputs.packageVersion }}
+    steps:
+      - name: Check docker image exists for latest npm package version
+        id: check
+        run: |
+          export packageVersion=$(npm view $NPM_PACKAGE version)
+          echo $packageVersion
+          dockerManifestResult=$(docker manifest inspect $TARGET_IMAGE:$packageVersion || true)
+          if [ "$dockerManifestResult" == "" ];
+          then
+            echo "::set-output name=packageVersion::$packageVersion"
+          fi
+
   build-and-deploy:
     runs-on: ubuntu-latest
+    if: needs.check-docker-image-exists.outputs.packageVersion != ''
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Check version
-        run: |
-          export VERSION=$(npm view $NPM_PACKAGE version)
-          echo "version=$VERSION" >> $GITHUB_ENV
-          docker manifest inspect $TARGET_IMAGE:$VERSION
-
       - name: Set up QEMU
-        if: failure()
         uses: docker/setup-qemu-action@v1
 
       - name: Set up Docker Buildx
-        if: failure()
         id: buildx
         uses: docker/setup-buildx-action@v1
 
       - name: Login to DockerHub
-        if: failure()
         uses: docker/login-action@v1
         with:
           username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and deploy docker image
-        if: failure()
         run: |
           docker buildx build \
             --push \
             --platform linux/amd64 \
             --target emartech \
             -t $TARGET_IMAGE:latest \
-            -t $TARGET_IMAGE:${{ env.version }} \
+            -t $TARGET_IMAGE:${{ needs.check-docker-image-exists.outputs.packageVersion }} \
             .
