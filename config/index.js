@@ -109,6 +109,11 @@ const firebaseConfig = {
     type: 'string',
     optional: true
   },
+  'firebase.configFile': {
+    env: 'FIREBASE_CONFIG_FILE',
+    type: 'string',
+    default: './firebase.json'
+  },
   'firebase.credentials': {
     env: 'GOOGLE_APPLICATION_CREDENTIALS_JSON',
     type: 'string',
